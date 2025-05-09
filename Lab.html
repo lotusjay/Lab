@@ -1,0 +1,58 @@
+<html><head>
+
+<body>
+<table id="sampleTable" border="1"> 
+  <tbody><tr>
+    <td>Row1 Col1</td> 
+    <td>Row1 Col2</td>
+  </tr> 
+  <tr>
+    <td>Row2 Col1</td> 
+    <td>Row2 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row3 Col1</td> 
+    <td>Row3 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row4 Col1</td> 
+    <td>Row4 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row5 Col1</td> 
+    <td>Row5 Col2</td>
+  </tr> 
+</tbody></table><br> 
+<input type="button" onclick="insertRowBottom()" value="Insert row">  
+<input type="button" onclick="deleteRowTop()" value="delete row">  
+<br>
+<div id="messageArea" style="font-weight:bold; margin-top:5px;"></div>
+<script>
+
+function insertRowBottom() {
+  var table = document.getElementById("sampleTable");
+  var rowCount = table.rows.length;
+  var newRowNumber = rowCount + 1;
+  var newRow = table.insertRow(-1); // Insert at the end
+  var cell1 = newRow.insertCell(0);
+  var cell2 = newRow.insertCell(1);
+  cell1.innerHTML = "Row" + newRowNumber + " Col1";
+  cell2.innerHTML = "Row" + newRowNumber + " Col2";
+  // Clear message on insert
+  document.getElementById("messageArea").innerText = "";
+}
+
+function deleteRowTop() {
+  var table = document.getElementById("sampleTable");
+  var rowCount = table.rows.length;
+  if (rowCount > 0) {
+    table.deleteRow(0);
+    document.getElementById("messageArea").innerText = "";
+  } else {
+    document.getElementById("messageArea").innerText = "Message: No more rows to delete";
+  }
+}
+
+</script>
+
+</body></html>
